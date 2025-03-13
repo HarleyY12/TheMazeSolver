@@ -15,32 +15,23 @@ public class MazeSolver {
                 }
             }
         }
-
-
-
-
-
-
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
-                if (array[xPos][yPos] == array[xPos + 1][yPos]) {
-                    xPos = xPos + 1;
-                    System.out.println("(" + xPos + "," + yPos + ")--->");
-                } else if ((array[xPos][yPos] == array[xPos][yPos + 1])) {
-                    yPos = yPos + 1;
-                    System.out.println("(" + xPos + "," + yPos + ")--->");
-                }
-
+        for(int i = 0;i<totalCorrectPaths;i++){
+            if (array[xPos][yPos] == array[xPos + 1][yPos]) {
+                xPos = xPos + 1;
+                System.out.println("(" + xPos + "," + yPos + ")--->");
+            } else if ((array[xPos][yPos] == array[xPos][yPos + 1])) {
+                yPos = yPos + 1;
+                System.out.println("(" + xPos + "," + yPos + ")--->");
             }
 
-
         }
-
-
-
-
-
-
-
     }
+
+
+
+
+
+
+
+
 }
