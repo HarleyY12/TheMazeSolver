@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         MazeSolver newMazeSolver = new MazeSolver();
-        System.out.println(Arrays.deepToString(getMaze("src/file")));
-        newMazeSolver.solveMaze();
+        String[][]maze = getMaze("src/file");
+        newMazeSolver.solveMaze(maze);
 
 
 
