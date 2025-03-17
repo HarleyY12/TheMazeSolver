@@ -7,54 +7,33 @@ public class MazeSolver {
     public void solveMaze(String[][]array) {
         xPos = 0;
         yPos = 0;
-        int totalCorrectPaths = 0;
-        for(int i = 0;i<array.length;i++){
-            for(int j = 0;j<array[0].length;j++){
-                if(Objects.equals(array[i][j], ".")){
-                    totalCorrectPaths = totalCorrectPaths + 1;
-                }
-            }
-        }
-        System.out.println("Number of possible paths:" +totalCorrectPaths);
-        System.out.print("(" + xPos + "," + yPos + ")--->");
+        boolean visited[][] = new boolean[array.length][array[0].length];
+        System.out.println("(" + xPos + "," + yPos + ")");
 
-        for(int i = 0;i<totalCorrectPaths;i++){
-            int[][]passedPaths = new int[totalCorrectPaths][totalCorrectPaths];
-
-            if ((Objects.equals(array[xPos][yPos], array[xPos + 1][yPos])) &&  passedPaths[i][i] != passedPaths[xPos+1][yPos] ){
+       while (xPos < array.length-1||yPos<array[0].length-1)
+       {
+           visited[xPos][yPos] = true;
+           boolean moved = false;
+            if (xPos+1<array.length && Objects.equals(array[xPos][yPos], array[xPos + 1][yPos]) && !visited[xPos+1][yPos]) {
+                moved = true;
                 xPos = xPos + 1;
-                passedPaths[i][i] = passedPaths[xPos][yPos];
-                System.out.print("(" + xPos + "," + yPos + ")--->");
-            } else if ((Objects.equals(array[xPos][yPos], array[xPos][yPos + 1]))  && passedPaths[i][i] != passedPaths[xPos][yPos+1]) {
+            } else if (yPos+1<array[0].length && (Objects.equals(array[xPos][yPos], array[xPos][yPos + 1])) && !visited[xPos][yPos+1]) {
+                moved = true;
                 yPos = yPos + 1;
-                passedPaths[i][i] = passedPaths[xPos][yPos];
-
-                System.out.print("(" + xPos + "," + yPos + ")--->");
-            }else if((Objects.equals(array[xPos][yPos], array[xPos-1][yPos]))  && passedPaths[i][i] != passedPaths[xPos-1][yPos]){
-                yPos = yPos - 1;
-                passedPaths[i][i] = passedPaths[xPos][yPos];
-
-                System.out.print("(" + xPos + "," + yPos + ")--->");
-
-            }else if((Objects.equals(array[xPos][yPos], array[xPos][yPos-1]))  && passedPaths[i][i] != passedPaths[xPos][yPos-1]){
+            } else if (xPos-1>=0 && (Objects.equals(array[xPos][yPos], array[xPos-1][yPos])) && !visited[xPos-1][yPos]) {
+                moved = true;
                 xPos = xPos - 1;
-                passedPaths[i][i] = passedPaths[xPos][yPos];
-
-                System.out.print("(" + xPos + "," + yPos + ")--->");
-
-
-
-
+            } else if (yPos-1>=0 && (Objects.equals(array[xPos][yPos], array[xPos][yPos - 1])) && !visited[xPos][yPos-1]) {
+                moved = true;
+                yPos = yPos - 1;
             }
 
 
-
-
-
-
+           if(moved){
+                System.out.println("--->(" + xPos + "," + yPos + ")");
+            }
 
         }
-        System.out.println(totalCorrectPaths);
     }
 
 
