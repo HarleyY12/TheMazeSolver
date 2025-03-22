@@ -36,9 +36,11 @@ public class MazeSolver {
             if(moved){
                 System.out.println("--->(" + xPos + "," + yPos + ")");
             }
-
+    if(xPos == array.length-1 && yPos == array[0].length - 1){
+            System.out.println("-->(" + xPos + "," + yPos + ")");
+            return true;
         }
-        return true;
+        return false;
     }
 
 
